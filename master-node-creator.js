@@ -9,7 +9,9 @@ console.log('Mnemonic:', mnemonic);
 // 2. Build the master HDNode from phrase
 const masterNode = HDNodeWallet.fromPhrase(mnemonic);
 console.log('Master xpub:', masterNode.extendedKey);
-
+console.log('Master Address:', masterNode.address);
+console.log('Master Public:', masterNode.publicKey);
+console.log('Master Private:', masterNode.privateKey);
 
 // Derive index 0
 const node0 = masterNode.derivePath("44'/60'/0'/0/0");
@@ -40,9 +42,6 @@ wallets.map((w, index) => {
     console.log(`Private[${index}]:`, w.privateKey);
 });
 
-
-
-
 function getUserNode(masterNode, userId) {
   // Derive user-specific account: m/44'/60'/<userId>'
   return masterNode.derivePath(`44'/60'/${userId}'`);
@@ -53,7 +52,6 @@ function getDepositWallet(userNode, depositIndex) {
   const addrNode = userNode.derivePath(`0/${depositIndex}`);
   return new Wallet(addrNode.privateKey);
 }
-
 
 async function topUpChild(childAddr, amountEth = "0.01") {
   const tx = await masterWallet.sendTransaction({
