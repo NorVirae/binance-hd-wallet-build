@@ -1,0 +1,16 @@
+{
+  "name": "hd-wallets",
+  "version": "1.0.0",
+  "main": "master-node-creator.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ethers": "^6.15.0"
+  }
+}
